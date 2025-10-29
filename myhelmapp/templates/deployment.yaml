@@ -4,23 +4,24 @@ metadata:
   name: mydeployment
   namespace: dev
   labels:
-    app: mywebapp
+    app: {{ .Values.appName}}
     tier: frontend
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mywebapp
+      app: {{ .Values.appName}}
       tier: frontend
+#pod template
   template:
     metadata:
       labels:
-        app: mywebapp
+        app: {{ .Values.appName}}
         tier: frontend
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 80
         resources: 

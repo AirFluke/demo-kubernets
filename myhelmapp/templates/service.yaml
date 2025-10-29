@@ -4,14 +4,14 @@ metadata:
   name: mywebapp-service
   namespace: dev
   labels:
-    app: mywebapp
+    app: {{ .Values.appName}}
 spec:
   ports:
     - port: 80
       protocol: TCP
       name: nginxapplication
   selector:
-    app: mywebapp
+    app: {{ .Values.appName}}
     tier: frontend
   type: NodePort
   
@@ -22,7 +22,7 @@ metadata:
   name: mywebapp-service
   namespace: prod
   labels:
-    app: mywebapp
+    app: {{ .Values.appName}}
 spec:
   ports:
     - port: 80
