@@ -2,6 +2,7 @@ appName: myhelmapp
 
 namespace: default
 
+replicas: 2
 configmap:
   name; nginx-configv1
 image:
